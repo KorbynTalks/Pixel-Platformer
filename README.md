@@ -1,7 +1,7 @@
 # Pixel Platformer
 
 The source code for my upcoming game,
-As its in development there will be changes every once in awhile if I feel like its good enough for it being up here.
+as it is in development, there will be changes every once in a while if I feel like it is good enough for it to be up here.
 
 And of course...
 DO NOT LEAK.
