@@ -326,8 +326,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: He is the only colored person in Greyville, He always likes to adventure
-    a bit. He hates dull colors like Gray.
+  m_text: He is the only coloured person in Greyville, He always likes to adventure
+    a bit. He hates dull colours like Gray.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -793,8 +793,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: He is a brother of Bluey, He always likes to adventure with him. Likes
-    more colorful colors. a Rumor roams around of him being created by a "Helper
+  m_text: He is a brother of Bluey, he always likes to adventure with him, he likes
+    more colorful colours. a Rumor roams around of Yelly being created by a "Helper
     of this world".
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1521,8 +1521,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: His origins on becoming a hero is Unknown, But he always looks for trouble
-    from Reddie! Knows the creator of this world, People think hes nuts.
+  m_text: His origins on becoming a hero is unknown, but he always looks for trouble
+    from Reddie. Bluey knows the creator of this world, but people think hes nuts
+    when he talks about it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3619,9 +3620,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Very VERY Unknown. What we know is that its a hidden power from Bluey,
-    When it breaks out he hides it right away. Some say that he got it from a "Minecraft
-    like" Animation Universe.
+  m_text: Very VERY Unknown, what we know is that its a hidden power from Bluey,
+    when it breaks out he hides it right away, some say that he got it from a Universe
+    very different from this one.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4400,7 +4401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Not much is known about him, But some say that he always hides and looks
+  m_text: Not much is known about him, but some say that he always hides and looks
     on what we are doing. Hes a fan of Blueys work.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
