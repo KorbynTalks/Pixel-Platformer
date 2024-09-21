@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8690138407329861751, guid: f959a7aeed378df4b8869bc0fdf0a262, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8690138407329861747, guid: f959a7aeed378df4b8869bc0fdf0a262, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f959a7aeed378df4b8869bc0fdf0a262, type: 3}
@@ -6514,6 +6518,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 450700503218074813, guid: fe9fe2170f7dd454aa7200f1377b2854, type: 3}
+      propertyPath: bgMusic
+      value: 
+      objectReference: {fileID: 863539751}
     - target: {fileID: 450700503218074815, guid: fe9fe2170f7dd454aa7200f1377b2854, type: 3}
       propertyPath: m_Time
       value: 0.25

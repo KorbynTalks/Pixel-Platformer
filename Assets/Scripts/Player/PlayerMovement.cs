@@ -1,12 +1,18 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
+    public float speed = 8f;
     public Animator animator;
+    public ParticleSystem deathParticles;
+    public AudioSource deathAudioSource;
+    public AudioSource bgMusic;
+    public SelectorManager selectorManager;
     private float jumpingPower = 16f;
+    public AudioSource jumpAudioSource;
     private bool isFacingRight = true;
+    private bool gameOver = false;
 
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
@@ -18,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(8f, 16f);
 
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
@@ -26,21 +33,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal)); // activates the walk animation when moving
-        if (Input.GetButtonUp("Horizontal")) // this disables the walk animation when no longer holding the arrow keys/WASD keys.
+        if (Input.GetButtonUp("Horizontal") && !gameOver) // this disables the walk animation when no longer holding the arrow keys/WASD keys.
         {
             animator.Play("Idle");
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded() && !gameOver)
         {
+            jumpAudioSource.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f && !gameOver)
         {
+            animator.Play("JumpFall", -1, 0.5f);
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
@@ -103,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
         {
             isWallJumping = true;
+            jumpAudioSource.Play();
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
 
@@ -132,5 +141,34 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Spike"))
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        deathParticles.Play();
+        deathAudioSource.Play();
+        bgMusic.Stop();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
+        speed = 0f;
+        rb.simulated = false;
+        gameOver = true;
+        Invoke("Restart", 1f);
+    }
+
+    void Restart()
+    {
+        int loadedScene;
+        loadedScene = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadScene(loadedScene);
     }
 }

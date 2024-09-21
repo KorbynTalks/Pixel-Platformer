@@ -5512,6 +5512,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 450700503218074813, guid: fe9fe2170f7dd454aa7200f1377b2854, type: 3}
+      propertyPath: bgMusic
+      value: 
+      objectReference: {fileID: 863539751}
     - target: {fileID: 450700503218074815, guid: fe9fe2170f7dd454aa7200f1377b2854, type: 3}
       propertyPath: m_Time
       value: 0.25

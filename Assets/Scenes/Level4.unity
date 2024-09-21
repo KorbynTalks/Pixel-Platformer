@@ -9167,6 +9167,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 450700503218074813, guid: fe9fe2170f7dd454aa7200f1377b2854, type: 3}
+      propertyPath: bgMusic
+      value: 
+      objectReference: {fileID: 863539751}
+    - target: {fileID: 450700503218074813, guid: fe9fe2170f7dd454aa7200f1377b2854, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1828069444}
