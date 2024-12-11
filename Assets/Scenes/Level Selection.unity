@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1f4db19b89b540ab7c6ce8ce28834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audios: []
 --- !u!1 &250061978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1585,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 7fecb44d2b5f20b45b76ab44da353f89, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 7fecb44d2b5f20b45b76ab44da353f89, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 7fecb44d2b5f20b45b76ab44da353f89, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: e1c4202cc2ccd6a4db2dcb6904376ac3, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: e1c4202cc2ccd6a4db2dcb6904376ac3, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal

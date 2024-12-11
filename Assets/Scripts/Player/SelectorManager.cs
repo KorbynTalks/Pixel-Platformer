@@ -10,5 +10,6 @@ public class SelectorManager : MonoBehaviour
     public void ChangeSelected(int whichCharacter)
     {
         selectedCharacter = whichCharacter;
+        PlayerPrefs.SetInt("WantedPlayer", selectedCharacter);
     }
 }

@@ -7,7 +7,7 @@ public class DevMode : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space")) {
+        if (Input.GetKeyDown("space") && Input.GetKeyDown("c")) {
             devFeatures.SetActive(true);
         }
     }

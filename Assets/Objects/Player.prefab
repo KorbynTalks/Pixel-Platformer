@@ -234,6 +234,8 @@ MonoBehaviour:
   deathAudioSource: {fileID: -8502826017542697773}
   bgMusic: {fileID: 0}
   selectorManager: {fileID: 0}
+  postProcessProfile: {fileID: 11400000, guid: 92a2f34acbe129142a64f953a9ef44e8, type: 2}
+  vignetteSpeed: 45
   jumpAudioSource: {fileID: -668629617580741883}
   rb: {fileID: 450700503218074809}
   groundCheck: {fileID: 450700503101223742}

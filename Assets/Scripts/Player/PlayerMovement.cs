@@ -1,4 +1,6 @@
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,7 +11,10 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource deathAudioSource;
     public AudioSource bgMusic;
     public SelectorManager selectorManager;
-    private float jumpingPower = 16f;
+    [SerializeField] private PostProcessProfile postProcessProfile;
+    private Vignette vignette;
+    public float vignetteSpeed;
+    [SerializeField] private float jumpingPower = 16f;
     public AudioSource jumpAudioSource;
     private bool isFacingRight = true;
     private bool gameOver = false;
@@ -31,35 +36,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
+    private void Start()
+    {
+        postProcessProfile.TryGetSettings(out vignette);
+    }
+
     private void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(horizontal)); // activates the walk animation when moving
-        if (Input.GetButtonUp("Horizontal") && !gameOver) // this disables the walk animation when no longer holding the arrow keys/WASD keys.
+        if(PlayerPrefs.GetInt("WantedPlayer") == 0)
         {
-            animator.Play("Idle");
+            MainPlayer("Speed", "Idle", "JumpFall", "IsJumping", 0);
         }
-
-        if (Input.GetButtonDown("Jump") && IsGrounded() && !gameOver)
-        {
-            jumpAudioSource.Play();
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f && !gameOver)
-        {
-            animator.Play("JumpFall", -1, 0.5f);
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-
-        WallSlide();
-        WallJump();
-
-        if (!isWallJumping)
-        {
-            Flip();
-        }
-        animator.SetBool("IsJumping", !IsGrounded() && rb.velocity.y != 0f); // activates the jumping animation
     }
 
     private void FixedUpdate()
@@ -160,6 +147,8 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
         speed = 0f;
         rb.simulated = false;
+        vignette.enabled.value = true;
+        vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.47f, vignetteSpeed * Time.deltaTime);
         gameOver = true;
         Invoke("Restart", 1f);
     }
@@ -168,7 +157,42 @@ public class PlayerMovement : MonoBehaviour
     {
         int loadedScene;
         loadedScene = SceneManager.GetActiveScene().buildIndex;
+        vignette.intensity.value = 0f;
+        vignette.enabled.value = false;
 
         SceneManager.LoadScene(loadedScene);
+    }
+
+    void MainPlayer(string speedAnimString, string whatToPlayForIdle, string whatToPlayForJumpFall, string booleanNameforIsJumping, int whatCharacter)
+    {
+        animator.SetInteger("SelectedCharacter", whatCharacter);
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat(speedAnimString, Mathf.Abs(horizontal)); // activates the walk animation when moving
+        if (Input.GetButtonUp("Horizontal") && !gameOver) // this disables the walk animation when no longer holding the arrow keys/WASD keys.
+        {
+            animator.Play(whatToPlayForIdle);
+        }
+
+        if (Input.GetButtonDown("Jump") && IsGrounded() && !gameOver)
+        {
+            jumpAudioSource.Play();
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f && !gameOver)
+        {
+            animator.Play(whatToPlayForJumpFall, -1, 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        WallSlide();
+        WallJump();
+
+        if (!isWallJumping)
+        {
+            Flip();
+        }
+        animator.SetBool(booleanNameforIsJumping, !IsGrounded() && rb.velocity.y != 0f); // activates the jumping animation
     }
 }
